@@ -17,23 +17,23 @@ from checker.models import RegiModel
 # from .utils import scrape_url, check_plagiarism
 
 
-def google_search(query):
-    """Fetch search results from Google for a given query."""
-    query = urllib.parse.quote(query)
-    url = f"https://www.google.com/search?q={query}&num=10"  # Fetch top 10 results
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-    }
+# def google_search(query):
+#     """Fetch search results from Google for a given query."""
+#     query = urllib.parse.quote(query)
+#     url = f"https://www.google.com/search?q={query}&num=10"  # Fetch top 10 results
+#     headers = {
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+#     }
     
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, 'html.parser')
+#     response = requests.get(url, headers=headers)
+#     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Extract snippets from search results
-    snippets = []
-    for g in soup.find_all('div', class_='BNeawe s3v9rd AP7Wnd'):
-        snippets.append(g.get_text())
+#     # Extract snippets from search results
+#     snippets = []
+#     for g in soup.find_all('div', class_='BNeawe s3v9rd AP7Wnd'):
+#         snippets.append(g.get_text())
     
-    return snippets
+#     return snippets
 
 def calculate_plagiarism_percentage(original_text, snippets):
     """Calculate plagiarism percentage based on snippets found in search results."""
